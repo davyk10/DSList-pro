@@ -24,6 +24,7 @@ public class GameModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "title")
     private String name;
     @Column(name = "game_year")
     private Integer year;
