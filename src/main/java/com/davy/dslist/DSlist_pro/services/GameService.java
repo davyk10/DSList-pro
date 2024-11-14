@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.davy.dslist.DSlist_pro.dtos.GameMaxDTO;
 import com.davy.dslist.DSlist_pro.dtos.GameMinDTO;
 import com.davy.dslist.DSlist_pro.models.GameModel;
+
 import com.davy.dslist.DSlist_pro.repositories.GameRepository;
 
 @Service
@@ -27,5 +28,11 @@ public class GameService {
     public GameMaxDTO findById(Long id) {
         GameModel game = repository.findById(id).get();
         return new GameMaxDTO(game);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        List<GameMinDTO> games = repository.searchByList(listId).stream().map(GameMinDTO::new).toList();
+        return games;
     }
 }

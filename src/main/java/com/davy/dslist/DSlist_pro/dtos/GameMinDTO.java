@@ -1,6 +1,7 @@
 package com.davy.dslist.DSlist_pro.dtos;
 
 import com.davy.dslist.DSlist_pro.models.GameModel;
+import com.davy.dslist.DSlist_pro.projections.GameMinProjection;
 
 public class GameMinDTO {
 
@@ -27,6 +28,14 @@ public class GameMinDTO {
         this.year = data.getYear();
         this.imgUrl = data.getImgUrl();
         this.shortDescription = data.getShortDescription();
+    }
+
+    public GameMinDTO(GameMinProjection projection) {
+        this.id = projection.getId();
+        this.title = projection.getTitle();
+        this.year = projection.getYear();
+        this.imgUrl = projection.getImgUrl();
+        this.shortDescription = projection.getShortDescription();
     }
 
     public Long getId() {
